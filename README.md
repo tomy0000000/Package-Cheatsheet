@@ -8,22 +8,22 @@ A curated cheat sheet to hands on all kinds of package manager
 | Install               | `apt install [package]`             | `brew install [formula/cask]`      | `pip install [package]`                     | `npm install [package]`   |                        |
 | Uninstall             | `apt remove [package]`              | `brew uninstall [formula/cask]`    | `pip uninstall [package]`                   | `npm uninstall [package]` |                        |
 | Uninstall all         |                                     | `brew remove --force $(brew list)` | `pip uninstall -y -r <(pip freeze)`         | `npm uninstall *`         |                        |
-| Upgrade               | `apt upgrade [package]`             | `brew upgrade [formula/cask]`      | `pip install --upgrade [package]`           |                           |                        |
-| Upgrade all           | `apt upgrade`                       | `brew upgrade`                     | <sup>[1](#pip-upgrade-all)</sup>            |                           |                        |
+| Upgrade               | `apt upgrade [package]`             | `brew upgrade [formula/cask]`      | `pip install --upgrade [package]`           | `npm update [package]`    |                        |
+| Upgrade all           | `apt upgrade`                       | `brew upgrade`                     | <sup>[1](#pip-upgrade-all)</sup>            | `npm update`              |                        |
 | List                  | `apt list`                          | `brew list`                        | `pip list`                                  | `npm list`                | `gem list`             |
 | List upgradable       | `apt list --upgradable`             | `brew outdated`                    | `pip list --outdated`                       | `npm outdated`            |                        |
-| List undepend         |                                     | `brew leaves`                      | `pip list --not-required`                   |                           |                        |
+| List undepend         |                                     | `brew leaves`                      | `pip list --not-required`                   | `npx depcheck`            |                        |
 | Information           | `apt show [package]`                | `brew info [formula/cask]`         | `pip show [package]`                        | `npm view [package]`      | `gem info [gem]`       |
 | Depend on             | `apt depends [package]`             | `brew deps [formula/cask]`         | `pipdeptree --packages [package]`           |                           | `gem dependency [gem]` |
 | Depend by             | `apt rdepends [package]`            | `brew uses [formula/cask]`         | `pipdeptree --reverse --packages [package]` |                           |                        |
-| List source           | `apt policy`                        | `brew tap`                         | -                                           |                           |                        |
-| Add source            | `add-apt-repository [ppa]`          | `brew tap [repo/url]`              | -                                           |                           |                        |
-| Remove source         | `add-apt-repository --remove [ppa]` | `brew untap [repo/url]`            | -                                           |                           |                        |
-| Update from source    | `apt update`                        | `brew update`                      | -                                           |                           |                        |
-| Cleanup all cache     | `apt clean`                         | `brew cleanup --prune=all`         | `pip cache purge`                           |                           |                        |
-| Cleanup useless cache | `apt autoclean`                     | `brew cleanup`                     | -                                           |                           |                        |
+| List source           | `apt policy`                        | `brew tap`                         | -                                           | -                         |                        |
+| Add source            | `add-apt-repository [ppa]`          | `brew tap [repo/url]`              | -                                           | -                         |                        |
+| Remove source         | `add-apt-repository --remove [ppa]` | `brew untap [repo/url]`            | -                                           | -                         |                        |
+| Update from source    | `apt update`                        | `brew update`                      | -                                           | -                         |                        |
+| Cleanup all cache     | `apt clean`                         | `brew cleanup --prune=all`         | `pip cache purge`                           | `npm cache clean --force` |                        |
+| Cleanup useless cache | `apt autoclean`                     | `brew cleanup`                     | -                                           | -                         |                        |
 | Uninstall useless     | `apt autoremove`                    | `brew autoremove`                  |                                             |                           |                        |
-| Healthcheck           |                                     | `brew doctor`                      |                                             |                           |                        |
+| Healthcheck           |                                     | `brew doctor`                      |                                             | `npm doctor`              |                        |
 
 <a name="pip-upgrade-all">1</a>:  `pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U`
 
